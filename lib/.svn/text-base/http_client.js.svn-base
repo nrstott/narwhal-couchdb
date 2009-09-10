@@ -1,0 +1,37 @@
+var util = require("util");
+
+function HttpClient(){};
+
+HttpClient.prototype = (function() {
+    var ajaxOptions = function() {
+        return {
+            async: true,
+            dataType: "json",
+            type: "get"
+        };
+    };
+    return {
+        _request: function(verb, uri, options) {
+            var opts = ajaxOptions();
+            util.update(opts, options || {});
+            opts.url = uri;
+            opts.type = verb;
+
+            $.ajax(opts);
+        },
+        get: function(uri, options){
+            this._request("GET", uri, options);
+        },
+        put: function(uri, options) {
+            this._request("PUT", uri, options);
+        },
+        post: function(uri, options) {
+            this._request("POST", uri, options);
+        },
+        del: function(uri, options) {
+            this._request("DELETE", uri, options);
+        }
+    };
+})();
+
+exports.HttpClient = HttpClient;

@@ -1,0 +1,49 @@
+8
+
+dir
+0
+svn+ssh://nathan@63.254.233.230/var/svnroot/qa/trunk/src/packages/couchdb/tests/couchdb
+svn+ssh://nathan@63.254.233.230/var/svnroot/qa
+add
+
+
+
+
+
+
+
+svn:special svn:externals svn:needs-lock
+
+
+
+
+
+
+
+
+
+
+
+fd392a08-f470-0410-905f-8fc16014983f
+
+all-tests.js
+file
+
+
+
+add
+
+database.tests.js
+file
+
+
+
+add
+
+server.tests.js
+file
+
+
+
+add
+
