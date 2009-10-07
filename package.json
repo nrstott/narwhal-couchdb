@@ -4,6 +4,6 @@
     "keywords": ["couch", "database", "document", "nosql"],
     "author": "Nathan Stott",
     "email": "nathan.stott@whiteboard-it.com",
-    "dependencies": [],
+    "dependencies": [ "browserjs" ],
     "lib": "lib"
 }
