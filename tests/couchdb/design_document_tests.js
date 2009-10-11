@@ -1,4 +1,4 @@
-var DesignDocument = require("../../packages/models/design_document");
+var DesignDocument = require("couchdb").DesignDocument;
 var assert = require("test/assert");
 
 exports["test create without id raises error"] = function(){
@@ -17,7 +17,7 @@ exports["test toDocument returns a document with id modified with _design/"] = f
     assert.isEqual("_design/mydd", dd.toDocument()._id);
 };
 
-exports["test viewBy with one member"] = function(){
+exports["test viewBy one member"] = function(){
     var dd = DesignDocument.create("mydd", function(){
         this.viewBy("name");
     });
@@ -27,7 +27,7 @@ exports["test viewBy with one member"] = function(){
     assert.isEqual("function(doc){if(doc['name']){emit(doc['name'],doc);}}",doc.views["by_name"]["map"]);
 };
 
-exports["test viewBy with two members"] = function(){
+exports["test viewBy two members"] = function(){
     var dd = DesignDocument.create("mydd", function(){
         this.viewBy("name_and_docType");
     });

@@ -1,8 +1,9 @@
 version(170);
 
-var fs = require("file");
-
+exports.config = require("./test-config");
 exports.testCouchDb = require("./couchdb/all-tests");
 
-if (require.main == module.id)
+if (require.main == module.id) {
     require('test/runner').run(exports);
+}
+

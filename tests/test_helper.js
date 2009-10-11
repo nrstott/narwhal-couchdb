@@ -1,15 +1,26 @@
-var CouchDb = require("couchdb").CouchDb;
+var couch = require("couchdb");
 var Database = require("couchdb").Database;
-var server = new CouchDb("http://localhost:5984/");
+var assert = require("test/assert");
 var dbName = "serverjs_database_test";
+var config = require("./test-config");
+var server;
 
 exports.recreateDb = function(){
-    server.deleteDb(dbName);
-    server.createDb(dbName);
+    server = couch.connect(config.uri);
+    if (server.hasDb(dbName)) {
+        server.deleteDb(dbName);
+    }
 
-    return new Database(server, dbName);
+    return server.database(dbName);
 };
 
 exports.deleteDb = function() {
     server.deleteDb(dbName);
 };
+
+if (assert.isEqual !== undefined) {
+    assert.equal = assert.isEqual;
+}
+
+exports.assert = assert;
+
